@@ -1,0 +1,31 @@
+name: Feature request / 功能建议
+description: Propose a focused usability or wallpaper-management improvement / 提议改进
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or use case / 实际需求
+      description: "What are you trying to do, and what currently gets in the way?"
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Suggested behavior / 期望改进
+      description: "Describe the result from a user's perspective; implementation details are optional."
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered / 其他方案
+      description: "Optional alternatives or tradeoffs."
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check / 隐私检查
+      options:
+        - label: I have not included personal wallpapers, access tokens, or identifying logs.
+          required: true
