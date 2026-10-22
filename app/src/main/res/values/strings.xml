@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 应用名称（会显示在桌面图标下面） -->
+    <string name="app_name">壁纸管家</string>
+    <string name="video_wallpaper_description">播放你在壁纸管家中选择的视频动态壁纸</string>
+</resources>
