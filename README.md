@@ -38,6 +38,8 @@ The project began with a practical need: managing still and video wallpapers tog
 - Android SDK：`minSdk 24`、`targetSdk 35`、`compileSdk 36`
 - JDK 17、Gradle Wrapper、GitHub Actions
 
+面向贡献者的模块职责和播放数据流说明见 [Architecture / 架构概览](docs/ARCHITECTURE.md)。
+
 ## 构建和运行 | Build from source
 
 需要 Android Studio、JDK 17 和 Android SDK API 36。打开仓库根目录，等待 Gradle 同步，然后运行：
