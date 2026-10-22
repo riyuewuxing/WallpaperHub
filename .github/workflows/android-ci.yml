@@ -1,0 +1,61 @@
+name: Android CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: wallpaperhub-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Checkout clean public repository
+        uses: actions/checkout@v4
+
+      - name: JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+
+      - name: Android SDK command-line tools
+        uses: android-actions/setup-android@v3
+
+      - name: Android API 36
+        run: sdkmanager "platforms;android-36" "build-tools;35.0.0"
+
+      - name: Use official artifact repositories on CI
+        run: sed -i '/maven.aliyun.com/d' settings.gradle.kts
+
+      - name: Prepare Gradle 8.9 distribution with retry
+        shell: bash
+        run: |
+          curl -fL --retry 6 --retry-delay 2 --retry-all-errors \
+            https://services.gradle.org/distributions/gradle-8.9-bin.zip \
+            -o "$RUNNER_TEMP/gradle-8.9-bin.zip"
+          sed -i "s#^distributionUrl=.*#distributionUrl=file\\://$RUNNER_TEMP/gradle-8.9-bin.zip#" gradle/wrapper/gradle-wrapper.properties
+
+      - name: Kotlin compile, unit tests, lint and APK build
+        shell: bash
+        run: |
+          chmod +x ./gradlew
+          ./gradlew :app:compileDebugKotlin :app:testDebugUnitTest :app:lintDebug :app:assembleDebug :benchmark:assembleAndroidTest --stacktrace
+
+      - name: Upload APK for test only
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wallpaperhub-debug-apk
+          path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
