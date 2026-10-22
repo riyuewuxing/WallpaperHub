@@ -29,8 +29,12 @@ jobs:
           java-version: '17'
           cache: gradle
 
-      - name: Android SDK command-line tools
-        uses: android-actions/setup-android@v3
+      - name: Use GitHub runner's installed Android SDK
+        shell: bash
+        run: |
+          command -v sdkmanager
+          sdkmanager --version
+          yes | sdkmanager --licenses >/dev/null || true
 
       - name: Android API 36
         run: sdkmanager "platforms;android-36" "build-tools;35.0.0"
