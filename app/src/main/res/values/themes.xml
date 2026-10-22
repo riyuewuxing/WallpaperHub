@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        本应用使用 Compose + Material3，不依赖 XML 主题做 UI；
+        但 Activity 在 Compose 接管之前需要一个有效的 Theme，
+        所以这里继承一个不显示 ActionBar 的空主题。
+    -->
+    <style name="Theme.WallpaperHub" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+</resources>
