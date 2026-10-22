@@ -1,0 +1,50 @@
+# ===== Android / Gradle =====
+*.iml
+.gradle/
+.kotlin/
+.gradle-local/
+local.properties
+.idea/
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+/WallpaperHub_*.zip
+
+# ===== 密钥（永远不要提交！）=====
+*.jks
+*.keystore
+keystore.properties
+
+# ===== 系统文件 =====
+.DS_Store
+Thumbs.db
+
+# ===== 日志 =====
+*.log
+hs_err_pid*
+
+# ===== Gradle Wrapper jar 太大就不传（可选；建议保留）=====
+# gradle/wrapper/gradle-wrapper.jar
+
+# ===== Other private/local artifacts (pre-publication hygiene) =====
+.env
+.env.*
+!.env.example
+*.p12
+*.pfx
+*.pem
+*.key
+*.sqlite
+*.sqlite3
+*.db
+*.hprof
+*.trace
+/device-evidence*/
+/device-evidence_*/
+*.logcat
