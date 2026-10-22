@@ -1,0 +1,48 @@
+name: Bug report / 缺陷反馈
+description: Report a reproducible WallpaperHub bug / 提交可复现问题
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve WallpaperHub. Do not upload private wallpapers, raw logs, phone numbers, IP addresses, tokens, or identifying screenshots.
+        感谢反馈！请勿公开包含个人隐私的壁纸、日志、手机号、地址或密钥。
+  - type: input
+    id: version
+    attributes:
+      label: App version or commit / 版本
+      placeholder: "0.4.4 or commit SHA"
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Android version and device / 系统与设备
+      placeholder: "Android 15; model (optional)"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce / 复现步骤
+      placeholder: "1. Open... 2. Select... 3. Observe..."
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior / 预期行为
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior / 实际行为
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional non-sensitive context / 补充信息
+      description: "Only sanitized details. Please use non-sensitive sample media."
